@@ -1,0 +1,83 @@
+/* Mixins generales */
+
+@mixin width($size) {
+    width: $size;
+}
+
+@mixin height($size) {
+    height: $size;
+}
+
+@mixin margin($size){
+    margin: $size;
+}
+
+@mixin top($size){
+    top: $size;
+}
+
+@mixin right($size){
+    right: $size;
+}
+
+@mixin left($size){
+    left: $size;
+}
+
+@mixin bottom($size){
+    bottom: $size;
+}
+
+@mixin margin-top($size) {
+    margin-top: $size;
+}
+
+@mixin margin-right($size) {
+    margin-right: $size;
+}
+
+@mixin margin-left($size) {
+    margin-left: $size;
+}
+
+@mixin margin-bottom($size) {
+    margin-bottom: $size;
+}
+
+@mixin padding($size){
+    padding: $size;
+}
+
+@mixin padding-top($size) {
+    padding-top: $size;
+}
+
+@mixin padding-bottom($size) {
+    padding-bottom: $size;
+}
+
+@mixin padding-left($size) {
+    padding-left: $size;
+}
+
+@mixin padding-right($size) {
+    padding-right: $size;
+}
+
+@mixin font-size($size) {
+    font-size: $size;
+}
+
+@mixin font-settings($weight: bold, $style: normal, $width: 100) {
+    font-optical-sizing: auto;
+    font-weight: $weight;
+    font-style: $style;
+    font-variation-settings: "wdth" $width;
+}
+
+@mixin image-adapt($bg-pos: center, $bg-repeat: no-repeat, $objet-fit: cover, $bg-size: cover){
+    background-position: $bg-pos;
+    background-repeat: $bg-repeat;
+    background-size: $bg-size;
+    object-fit: $objet-fit;
+}

@@ -1,0 +1,52 @@
+// Importaciones
+@import './mixins';
+@import './variables';
+
+// Estilos base
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.asus-font {
+  font-family: $font-family-asus; 
+}
+
+.asus-font-bold {
+  font-family: $font-family-bold;
+}
+
+.asus-font-zebulon {
+  font-family: $font-family-zebulon;
+}
+
+// Navbar
+.logo {
+  @include width(5rem);
+}
+
+.nav-link {
+  position: relative;
+  @include padding(10px);
+
+  &:hover {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    @include bottom(0);
+    @include left(0);
+    @include width(0);
+    @include height(2px);
+    background-color: $primary-color;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    @include width(100%);
+    opacity: 1;
+  }
+}
