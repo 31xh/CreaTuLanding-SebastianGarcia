@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.png'
-import Cartwidget from './Cartwidget'
+import Cartwidget from './CartWidget'
 
 const Nabvar = () => {
     return (
