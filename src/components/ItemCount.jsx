@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 const ItemCount = () => {
-    const [counter, setCounter] = useState(0)
+    const [counter, setCounter] = useState(1)
 
     const handleClickSumar = () => {
         setCounter(counter + 1)
@@ -22,7 +22,7 @@ const ItemCount = () => {
                 <button className="btn btn-outline-secondary" type="button" onClick={handleClickRestar}>
                     -
                 </button>
-                <input type="number" className="form-control text-center" onChange={counter} value={counter} />
+                <input type="number" className="form-control text-center" readOnly id='conter' value={counter} />
                 <button className="btn btn-outline-secondary" type="button" onClick={handleClickSumar}>
                     +
                 </button>
