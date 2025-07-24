@@ -1,10 +1,20 @@
-import React from 'react'
-import ItemDetailSpecs from './ItemDetailSpecs'
 import ItemDetailDesc from './ItemDetailDesc'
 import ItemDetailMedia from './ItemDetailMedia'
 import ItemCount from './ItemCount'
+import { useContext, useState } from 'react'
+import { CartContext } from '../context/CartContext'
+import { addedToCart } from './alerts'
 
 const ItemDetail = ({ item }) => {
+
+  const [counter, setCounter] = useState(1)
+  const { addItem } = useContext(CartContext)
+
+  const handleAddToCart = () => {
+    addItem({...item, cantidad: counter})
+    addedToCart()
+  }
+
   return (
     <>
       <div className="container">
@@ -33,9 +43,9 @@ const ItemDetail = ({ item }) => {
                   {item.desc}
                 </p>
               </div>
-              <ItemCount/>
+              <ItemCount counter={counter} setCounter={setCounter}/>
               <div className="d-grid gap-2 mb-4">
-                <button className="btn btn-dark mt-5 btn-lg">
+                <button onClick={handleAddToCart} className="btn btn-dark mt-5 btn-lg">
                   <i className="fas fa-shopping-cart me-2"></i>
                   Agregar al carrito
                 </button>

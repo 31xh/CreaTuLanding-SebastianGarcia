@@ -60,6 +60,12 @@
   box-shadow: 0px 5px 10px #212121;
 }
 
+.cart-image {
+  @include width(130px);
+  @include height(130px);
+  object-fit: contain;
+}
+
 .card {
   width: fit-content;
 }

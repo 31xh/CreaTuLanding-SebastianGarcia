@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ItemList from './ItemList'
 import { useParams } from 'react-router-dom';
+import { getItems, getItemsByCategory } from '../firebase/db';
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const { categoryId } = useParams()
 
   useEffect(() => {
-    fetch('https://685432bd5470323abe951525.mockapi.io/api/v1/products')
-    .then(response => response.json())
-    .then(data => {
-      if (categoryId) {
-        setProductos(data.filter(prod => String(prod.categoriaId) === String(categoryId)))
-      } else {
-        setProductos(data)
-      }
-    })
+    if (categoryId) {
+      getItemsByCategory(categoryId).then(items => setProductos(items)) 
+    } else {
+      getItems().then(items => setProductos(items))
+    }
     
-    .catch(error => console.error('Error fetching products:', error));
   }, [categoryId]);
 
   return (

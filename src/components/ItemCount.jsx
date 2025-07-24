@@ -1,23 +1,18 @@
-import React from 'react'
-import { useState } from 'react'
 
-const ItemCount = () => {
-    const [counter, setCounter] = useState(1)
-
+const ItemCount = ({counter, setCounter}) => {
     const handleClickSumar = () => {
         setCounter(counter + 1)
     }
 
     const handleClickRestar = () => {
         setCounter(counter - 1)
-        if (counter == 0) {
-            return setCounter(0) 
+        if (counter == 1) {
+            return setCounter(1) 
         }
     }
 
     return (
         <div className="mb-3">
-            <label className="form-label fw-semibold">Cantidad:</label>
             <div className="input-group">
                 <button className="btn btn-outline-secondary" type="button" onClick={handleClickRestar}>
                     -
