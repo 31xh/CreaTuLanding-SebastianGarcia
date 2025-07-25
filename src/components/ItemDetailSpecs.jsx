@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ItemDetailSpecs = ({ item }) => {
     return (
         <div className="tab-pane fade" id="specifications" role="tabpanel">

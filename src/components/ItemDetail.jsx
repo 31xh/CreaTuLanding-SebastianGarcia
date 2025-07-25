@@ -3,7 +3,8 @@ import ItemDetailMedia from './ItemDetailMedia'
 import ItemCount from './ItemCount'
 import { useContext, useState } from 'react'
 import { CartContext } from '../context/CartContext'
-import { addedToCart } from './alerts'
+import { addedToCart } from '../scripts/alerts'
+import { NavLink } from 'react-router-dom'
 
 const ItemDetail = ({ item }) => {
 
@@ -11,7 +12,7 @@ const ItemDetail = ({ item }) => {
   const { addItem } = useContext(CartContext)
 
   const handleAddToCart = () => {
-    addItem({...item, cantidad: counter})
+    addItem({ ...item, cantidad: counter })
     addedToCart()
   }
 
@@ -43,16 +44,15 @@ const ItemDetail = ({ item }) => {
                   {item.desc}
                 </p>
               </div>
-              <ItemCount counter={counter} setCounter={setCounter}/>
+              <ItemCount counter={counter} setCounter={setCounter} />
               <div className="d-grid gap-2 mb-4">
                 <button onClick={handleAddToCart} className="btn btn-dark mt-5 btn-lg">
                   <i className="fas fa-shopping-cart me-2"></i>
                   Agregar al carrito
                 </button>
-                <button className="btn btn-primary btn-lg">
-                  <i className="fas fa-bolt me-2"></i>
-                  Comprar
-                </button>
+                <NavLink to={'/checkout'} onClick={handleAddToCart} className="text-white text-decoration-none btn btn-primary btn-lg">
+                    Comprar
+                </NavLink>
               </div>
             </div>
           </div>

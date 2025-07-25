@@ -2,39 +2,12 @@ import { serverTimestamp } from "firebase/firestore";
 import { useCart } from "../context/useCart";
 import { addItems } from "../firebase/db";
 import { useState } from "react";
-import { checkOut } from "./alerts";
-import { Navigate, useNavigate } from "react-router-dom";
+import { checkOut } from "../scripts/alerts";
+import { useNavigate } from "react-router-dom";
+import { validateCheckOutForm } from "../scripts/validation";
 
 const Checkout = () => {
     const [errors, setErrors] = useState({});
-
-    const validateForm = (form) => {
-        const newErrors = {};
-        const email = form.email.value;
-        const name = form.name.value;
-        const phone = form.phone.value;
-
-        if (!email) {
-            newErrors.email = "Email is required";
-        } else if (email.includes("@") === false && email.endsWith(".com") === false) {
-            newErrors.email = "Email is invalid";
-        }
-
-        if (!name) {
-            newErrors.name = "Name is required";
-        } else if (name.length < 3) {
-            newErrors.name = "Name must be at least 3 characters long";
-        }
-
-        if (!phone) {
-            newErrors.phone = "Phone is required";
-        } else if (phone.length < 10 && phone.length > 15) {
-            newErrors.phone = "Phone must be between 10 and 15 digits long";
-        }
-
-        return newErrors;
-    }
-
     const navigate = useNavigate();
     const { cart } = useCart()
     const { emptyCart } = useCart()
@@ -42,10 +15,10 @@ const Checkout = () => {
 
     const handleForm = async (e) => {
         e.preventDefault();
-
+        
         const form = e.target
 
-        const newErrors = validateForm(form)
+        const newErrors = validateCheckOutForm(form)
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
             return;

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 const Cartwidget = () => {
@@ -9,13 +9,13 @@ const Cartwidget = () => {
 
   return (
     <>
-      <Link to={'/cart'} >
+      <NavLink to={'/cart'} >
         <i className="bi bi-cart2 fs-4 text-dark">
           <span className='rounded-pill badge bg-dark fs-6'>
             {quantity}
           </span>
         </i>
-      </Link>
+      </NavLink>
     </>
   )
 }

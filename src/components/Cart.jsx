@@ -1,14 +1,10 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useCart } from "../context/useCart"
 import ItemCount from "./ItemCount"
 
 
 const Cart = () => {
-    const {
-        cart,
-        removeItem,
-        updateQuantity
-    } = useCart()
+    const { cart, removeItem, updateQuantity } = useCart()
     const total = cart.reduce((acc, prod) => acc + (prod.price * prod.cantidad), 0)
 
     return (
@@ -38,15 +34,15 @@ const Cart = () => {
 
                     <div className="col-12 text-center">
                         <h3>No hay productos en el carrito</h3>
-                        <Link to="/" className="btn btn-primary">Volver a la tienda</Link>
+                        <NavLink to="/" className="btn btn-primary">Volver a la tienda</NavLink>
                     </div>
 
                     :
 
                     <div className="col-lg-3 border-4 shadow-lg">
                         <div className="d-flex flex-column align-items-center justify-content-center h-100">
-                            <h5 className="text-center">Total: ${total}</h5>
-                            <Link to={'/checkout'} className="text-primary">Ir al checkout</Link>
+                            <h5 className="text-center">Total: ${Math.round(total)}</h5>
+                            <NavLink to={'/checkout'} className="text-primary">Ir al checkout</NavLink>
                         </div>
                     </div>
                 }
