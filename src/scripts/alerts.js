@@ -21,26 +21,26 @@ export const checkOut = (id, resetCart, navigate) => {
 
 export const areYouSure = (emptyCart) => {
     Swal.fire({
-  title: "<strong>Esta seguro de vaciar el carrito?</strong>",
-  icon: "info",
-  html: `
+        title: "<strong>Esta seguro de vaciar el carrito?</strong>",
+        icon: "info",
+        html: `
     <div>
         <p className="fw-bold">Esta acción no se puede deshacer.</p>
         <p className="fs-5">¿Desea continuar?</p>
     </div>
   `,
-  showCloseButton: true,
-  showCancelButton: true,
-  focusConfirm: false,
-  confirmButtonText: `
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: `
     <i class="fa fa-thumbs-up"></i> Si
   `,
-  confirmButtonAriaLabel: "Thumbs up, great!",
-  cancelButtonText: `
+        confirmButtonAriaLabel: "Thumbs up, great!",
+        cancelButtonText: `
     <i class="fa fa-thumbs-down"></i> No
   `,
-  cancelButtonAriaLabel: "Thumbs down"
-}) .then((result) => {
+        cancelButtonAriaLabel: "Thumbs down"
+    }).then((result) => {
         if (result.isConfirmed) {
             emptyCart();
         }
