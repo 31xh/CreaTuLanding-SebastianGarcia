@@ -14,7 +14,6 @@ const ItemList = ({ productos }) => {
                                         <h5 className="card-title font-weight-bold">{producto.name}</h5>
                                         <p className="card-text">${producto.price}</p>
                                         <NavLink to={`/product/${producto.id}`} className="btn details px-auto">Ver detalles</NavLink><br />
-                                        <a href="#" className="btn cart px-auto">Agregar al carrito</a>
                                     </div>
                                 </div>
                             </div>
